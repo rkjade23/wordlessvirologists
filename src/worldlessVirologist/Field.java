@@ -1,28 +1,42 @@
 package worldlessVirologist;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public abstract class Field {
-    private Virologist OnField;
-    private List<Field> neighbours;
+    protected Virologist OnField;
+    private ArrayList<Field> neighbours= new ArrayList<Field>();
+    public int index;
+    
 
-    public Field(Virologist v, List<Field> n){
-        OnField = v;
-        neighbours = n;
-
-    }
-
-    public abstract void Accept(Virologist v);
+    
+	public void Accept(Virologist v) {
+		v.setField(this);
+	};
 
     public void Remove(Virologist v){
-        System.out.println("Remove()");
-
+        System.out.println(v.getName()+" left the field!");
+        OnField=null;
+    }
+    
+    public int getNumofNeighs(){
+       return neighbours.size();
+    }
+    
+    public Field randomField(int n) {
+    	return neighbours.get(n);
     }
 
     public boolean IsNeighbour(Field f){
-        System.out.println("IsNeighbor()");
+        
+        return neighbours.contains(f);
 
-        return true;
     }
+    
+    public void AddNeighbour(Field f ) {
+    	neighbours.add(f);
+    	
+    	
+    }
+    
 
 }

@@ -6,13 +6,24 @@ import java.util.Scanner;
 public class Storage extends Field{
    // private List<Material> materials
     private Material material;
-
-    public Storage(Virologist v, List<Field> n) {
-        super(v,n);
+    public Storage(Material m) {
+    	material=m;
     }
 
+    /**
+     * move on a storage type of field
+     * the palyer can decide if they want to pick up the material there
+     */
     @Override
     public void Accept(Virologist v){
+    	if(v.getBear()) {
+    		this.OnField=v;
+        	v.setField(this);
+        	material=null;
+        	return;
+    	}
+    	this.OnField=v;
+    	v.setField(this);
         int x;
         Scanner sc = new Scanner(System.in);
 

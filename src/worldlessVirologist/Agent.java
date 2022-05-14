@@ -1,6 +1,7 @@
 package worldlessVirologist;
 
 public abstract class Agent {
+	protected String name;
 	private int amino;
 	private int nucleo;
 	
@@ -13,6 +14,6 @@ public abstract class Agent {
 	}
 	
 	public void Learn(Virologist v) {
-		v.addAgentKnown(this);
+		
 	}
 }
